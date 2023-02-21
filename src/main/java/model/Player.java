@@ -4,6 +4,8 @@ import lombok.Builder.Default;
 import lombok.Value;
 import lombok.With;
 import model.Hero;
+import service.HeroFinderService;
+import service.ShowDeckPlayerService;
 
 import java.util.List;
 
@@ -41,14 +43,5 @@ public class Player {
 
     public String getName() {
         return name;
-    }
-
-    public Hero findHeroByName(String name){
-        //trouve hero grâce name
-        return new Hero();
-    }
-
-    public void attackPlayer(Player player){
-        //attaquer joueur
     }
 }

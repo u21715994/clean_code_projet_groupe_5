@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Deck {
     private final String ID = "1";
     List<Hero> cards = new ArrayList<Hero>();
@@ -19,6 +20,10 @@ public class Deck {
 
     public String getID() {
         return ID;
+    }
+
+    public List<Hero> getCards() {
+        return cards;
     }
 
     public void addCardsToDeck(Hero hero){

@@ -1,9 +1,10 @@
 package service;
 
+import model.Deck;
 import model.Player;
 
 public class ShowDeckPlayerService {
-    public static void showDeck(Player player){
-        System.out.println(player.getDeck());
+    public static Deck showDeck(Player player){
+        return player.getDeck();
     }
 }

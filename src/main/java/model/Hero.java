@@ -8,4 +8,21 @@ public class Hero {
     int armor;
     String rarity;
     int level;
+
+    public int getLevel() {
+        return level;
+    }
+
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                ", lifePoint=" + lifePoint +
+                ", experiencePoint=" + experiencePoint +
+                ", power=" + power +
+                ", armor=" + armor +
+                ", rarity='" + rarity + '\'' +
+                ", level=" + level +
+                '}';
+    }
 }

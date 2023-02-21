@@ -15,9 +15,9 @@ public class HeroGenerationService {
         boolean probablyLegendary = heroRarity <= 5;
         boolean probablyRare = 5 < heroRarity && heroRarity <= 25;
         if(probablyLegendary)
-            return HeroCreateService.createHero(generateSpeciality(), Rarity.LEGENDARY, "r");
+            return HeroCreateService.createHero(generateSpeciality(), Rarity.LEGENDARY, GenerateNameHeroService.generateName());
         else if(probablyRare)
-            return HeroCreateService.createHero(generateSpeciality(), Rarity.RARE, "r");
-        return HeroCreateService.createHero(generateSpeciality(), Rarity.COMMON, "r");
+            return HeroCreateService.createHero(generateSpeciality(), Rarity.RARE, GenerateNameHeroService.generateName());
+        return HeroCreateService.createHero(generateSpeciality(), Rarity.COMMON, GenerateNameHeroService.generateName());
     }
 }
