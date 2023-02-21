@@ -1,12 +1,12 @@
 package domain.functional.model;
 
-public class Hero {
+public abstract class Hero {
     String name;
     int lifePoint;
     int experiencePoint;
     int power;
     int armor;
-    String rarity;
+    Rarity rarity;
     int level;
 
     public int getLevel() {
@@ -25,4 +25,6 @@ public class Hero {
                 ", level=" + level +
                 '}';
     }
+
+    public abstract void attack(Hero hero);
 }

@@ -1,7 +1,6 @@
 package domain.functional.model;
 
 public class HeroTank extends Hero {
-    private final Rarity rarity;
     public HeroTank(String name, Rarity rarity){
         this.name = name;
         this.lifePoint = 1000 + (1000/10) * rarity.getValue();
@@ -10,5 +9,15 @@ public class HeroTank extends Hero {
         this.armor = 20 + (20/10) * rarity.getValue();
         this.rarity = rarity;
         this.level = 1;
+    }
+
+    public void attack(Hero hero) {
+        hero.power = hero.power - this.power;
+        hero.armor = this.power - this.armor;
+    }
+
+    public void attackWizard(Hero hero) {
+        hero.power = hero.power - (this.power+20);
+        hero.armor = (this.power+20) - this.armor;
     }
 }

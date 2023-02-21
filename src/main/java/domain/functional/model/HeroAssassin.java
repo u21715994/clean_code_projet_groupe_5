@@ -1,7 +1,6 @@
 package domain.functional.model;
 
 public class HeroAssassin extends Hero {
-    private final Rarity rarity;
     public HeroAssassin(String name, Rarity rarity){
         this.name = name;
         this.lifePoint = 800 + (800/10) * rarity.getValue();
@@ -25,5 +24,16 @@ public class HeroAssassin extends Hero {
 
     public void winBattle(){
         this.experiencePoint++;
+    }
+
+    public void attack(Hero hero) {
+
+        hero.power = hero.power - this.power;
+        hero.armor = this.power - this.armor;
+    }
+
+    public void attackTank(Hero hero) {
+        hero.power = hero.power - (this.power+30);
+        hero.armor = (this.power+30) - this.armor;
     }
 }
