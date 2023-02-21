@@ -1,7 +1,4 @@
-package model;
-
-import model.Hero;
-import model.Rarity;
+package domain.functional.model;
 
 public class HeroAssassin extends Hero {
     private final Rarity rarity;

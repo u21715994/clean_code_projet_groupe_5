@@ -1,11 +1,5 @@
-package model;
-import lombok.Builder;
-import lombok.Builder.Default;
+package domain.functional.model;
 import lombok.Value;
-import lombok.With;
-import model.Hero;
-import service.HeroFinderService;
-import service.ShowDeckPlayerService;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package service;
+package domain.functional.service;
 
-import model.Deck;
-import model.Hero;
+import domain.functional.model.Deck;
+import domain.functional.model.Hero;
 
 import java.util.List;
 

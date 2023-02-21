@@ -1,7 +1,7 @@
-package service;
+package domain.functional.service;
 
 import database.InMemoryDatabaseHistoryBattle;
-import model.HistoryBattle;
+import domain.functional.model.HistoryBattle;
 
 public class HistoryBattleRecordService {
     public InMemoryDatabaseHistoryBattle inMemoryDatabaseHistoryBattle;

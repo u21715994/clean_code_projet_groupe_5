@@ -1,4 +1,4 @@
-package service;
+package domain.functional.service;
 
 import java.util.Random;
 

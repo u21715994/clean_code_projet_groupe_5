@@ -1,6 +1,6 @@
-package model;
+package domain.functional.model;
 
-import service.UpdatePlayerInDatabaseService;
+import domain.functional.service.UpdatePlayerInDatabaseService;
 
 public class PlayerOpenPackService {
     public static Player openPack(Player player, int tokenRequired){

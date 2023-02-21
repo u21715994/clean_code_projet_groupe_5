@@ -1,7 +1,6 @@
 package database;
 
-import model.Deck;
-import model.Player;
+import domain.functional.model.Deck;
 
 import java.util.concurrent.ConcurrentHashMap;
 

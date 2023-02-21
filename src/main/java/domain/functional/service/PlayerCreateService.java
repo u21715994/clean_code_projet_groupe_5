@@ -1,7 +1,7 @@
-package service;
+package domain.functional.service;
 
-import model.Hero;
-import model.Player;
+import domain.functional.model.Hero;
+import domain.functional.model.Player;
 
 import java.util.List;
 

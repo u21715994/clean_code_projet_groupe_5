@@ -1,4 +1,4 @@
-package model;
+package domain.functional.model;
 
 import java.util.List;
 

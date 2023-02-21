@@ -1,4 +1,4 @@
-package model;
+package domain.functional.model;
 
 public final class HeroFactory {
     public static Hero createHero(Speciality speciality, Rarity rarity, String name){

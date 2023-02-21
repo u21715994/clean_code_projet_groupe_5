@@ -1,8 +1,7 @@
-package service;
+package domain.functional.service;
 
 import database.InMemoryDatabasePlayer;
-import model.Hero;
-import model.Player;
+import domain.functional.model.Player;
 
 public class PlayerFinderService {
     public static InMemoryDatabasePlayer inMemoryDatabasePlayer;

@@ -1,4 +1,4 @@
-package model;
+package domain.functional.model;
 
 public class Hero {
     String name;

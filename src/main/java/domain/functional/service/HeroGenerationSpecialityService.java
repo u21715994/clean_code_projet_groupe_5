@@ -1,6 +1,6 @@
-package service;
+package domain.functional.service;
 
-import model.Speciality;
+import domain.functional.model.Speciality;
 
 import java.util.Random;
 

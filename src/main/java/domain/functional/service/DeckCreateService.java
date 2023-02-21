@@ -1,7 +1,7 @@
-package service;
+package domain.functional.service;
 
-import model.Deck;
-import model.Player;
+import domain.functional.model.Deck;
+import domain.functional.model.Player;
 
 public class DeckCreateService {
     public Deck createDeck(Player player){

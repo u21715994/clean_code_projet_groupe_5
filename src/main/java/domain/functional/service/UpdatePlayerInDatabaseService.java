@@ -1,7 +1,7 @@
-package service;
+package domain.functional.service;
 
 import database.InMemoryDatabasePlayer;
-import model.Player;
+import domain.functional.model.Player;
 
 public class UpdatePlayerInDatabaseService {
     public static void updatePlayer(String id, Player player){

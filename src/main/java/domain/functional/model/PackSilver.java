@@ -1,10 +1,9 @@
-package model;
+package domain.functional.model;
 
-import service.PlayerCreateService;
+import domain.functional.service.HeroGenerationService;
+import domain.functional.service.PlayerCreateService;
 
 import java.util.ArrayList;
-
-import static service.HeroGenerationService.generateHero;
 
 public class PackSilver extends Pack{
     public PackSilver(){
@@ -15,7 +14,7 @@ public class PackSilver extends Pack{
 
     public void pack(){
         for(int i = 0; i < 3; i++) {
-            this.heroes.add(generateHero());
+            this.heroes.add(HeroGenerationService.generateHero());
         }
     }
 

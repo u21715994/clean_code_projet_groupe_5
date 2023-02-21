@@ -1,7 +1,6 @@
 package database;
 
-import model.HistoryBattle;
-import model.Player;
+import domain.functional.model.HistoryBattle;
 
 import java.util.concurrent.ConcurrentHashMap;
 

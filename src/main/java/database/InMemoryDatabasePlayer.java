@@ -1,8 +1,7 @@
 package database;
 
-import model.Player;
+import domain.functional.model.Player;
 
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class InMemoryDatabasePlayer {

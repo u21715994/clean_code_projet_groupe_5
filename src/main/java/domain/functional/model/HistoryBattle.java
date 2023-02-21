@@ -1,4 +1,4 @@
-package model;
+package domain.functional.model;
 
 public class HistoryBattle {
     private Player attacker;

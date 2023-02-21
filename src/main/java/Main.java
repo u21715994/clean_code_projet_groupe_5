@@ -1,12 +1,8 @@
 import database.InMemoryDatabasePlayer;
-import model.Player;
-import model.PlayerOpenPackService;
-import service.HeroFinderService;
-import service.PlayerCreateService;
-import service.PlayerFinderService;
-import service.ShowDeckPlayerService;
-
-import static database.InMemoryDatabasePlayer.IN_MEMORY_DATABASE;
+import domain.functional.model.Player;
+import domain.functional.model.PlayerOpenPackService;
+import domain.functional.service.HeroFinderService;
+import domain.functional.service.PlayerCreateService;
 
 public class Main {
     public static void main(String[] args) {
