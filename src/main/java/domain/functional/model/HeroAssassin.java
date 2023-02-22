@@ -11,10 +11,6 @@ public class HeroAssassin extends Hero {
         this.level = 1;
     }
 
-    public void attackHero(){
-
-    }
-
     public void levelUp(){
         this.level++;
         this.lifePoint = this.lifePoint + this.lifePoint/10;
@@ -27,13 +23,14 @@ public class HeroAssassin extends Hero {
     }
 
     public void attack(Hero hero) {
-
-        hero.power = hero.power - this.power;
-        hero.armor = this.power - this.armor;
+        System.out.println(this.power);
+        System.out.println(hero.armor);
+        hero.lifePoint = hero.lifePoint - this.power;
+        hero.armor = this.power - hero.armor;
     }
 
     public void attackTank(Hero hero) {
-        hero.power = hero.power - (this.power+30);
-        hero.armor = (this.power+30) - this.armor;
+        hero.lifePoint = hero.lifePoint - (this.power+30);
+        hero.armor = ((this.power+30) - hero.armor);
     }
 }

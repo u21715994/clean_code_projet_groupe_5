@@ -12,12 +12,14 @@ public class HeroTank extends Hero {
     }
 
     public void attack(Hero hero) {
-        hero.power = hero.power - this.power;
-        hero.armor = this.power - this.armor;
+        hero.lifePoint = hero.lifePoint - this.power;
+        System.out.println(this.power);
+        System.out.println(hero.armor);
+        hero.armor = this.power - hero.armor;
     }
 
     public void attackWizard(Hero hero) {
-        hero.power = hero.power - (this.power+20);
-        hero.armor = (this.power+20) - this.armor;
+        hero.lifePoint = hero.lifePoint - (this.power+20);
+        hero.armor = (this.power+20) - hero.armor;
     }
 }

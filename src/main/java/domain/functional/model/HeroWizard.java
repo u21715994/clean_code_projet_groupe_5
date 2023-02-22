@@ -12,12 +12,14 @@ public class HeroWizard extends Hero {
     }
 
     public void attack(Hero hero) {
-        hero.power = hero.power - this.power;
-        hero.armor = this.power - this.armor;
+        System.out.println(this.power);
+        System.out.println(hero.armor);
+        hero.lifePoint = hero.lifePoint - this.power;
+        hero.armor = this.power - hero.armor;
     }
 
     public void attackAssassin(Hero hero) {
-        hero.power = hero.power - (this.power+25);
-        hero.armor = (this.power+25) - this.armor;
+        hero.lifePoint = hero.lifePoint - (this.power+25);
+        hero.armor = (this.power+25) - hero.armor;
     }
 }
