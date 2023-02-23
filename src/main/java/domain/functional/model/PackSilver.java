@@ -9,16 +9,16 @@ public class PackSilver extends Pack{
     public PackSilver(){
         super.tokensRequired = 1;
         this.heroes = new ArrayList<Hero>();
-        pack();
+        createPack();
     }
 
-    public void pack(){
+    public void createPack(){
         for(int i = 0; i < 3; i++) {
             this.heroes.add(HeroGenerationService.generateHero());
         }
     }
 
-    public Player addHeroesToDeck(Player player){
-        return PlayerCreateService.createPlayer(player, heroes);
+    public Player addHeroesToDeck(Player player, int tokenRequired){
+        return PlayerCreateService.createPlayer(player, tokenRequired, heroes);
     }
 }

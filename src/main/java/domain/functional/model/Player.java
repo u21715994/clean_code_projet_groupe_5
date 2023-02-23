@@ -18,11 +18,11 @@ public class Player {
         this.deck = new Deck();
     }
 
-    public Player(Player player, List<Hero> heroes){
+    public Player(Player player, int tokenRequired,List<Hero> heroes){
         this.name = player.name;
         this.ID = player.ID;
         this.deck = new Deck();
-        this.token = player.token;
+        this.token = player.token - tokenRequired;
         for(Hero hero: player.deck.cards){
             this.deck.cards.add(hero);
         }

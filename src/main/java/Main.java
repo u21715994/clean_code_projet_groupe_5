@@ -2,9 +2,7 @@ import database.InMemoryDatabaseHistoryBattle;
 import database.InMemoryDatabasePlayer;
 import domain.functional.model.Player;
 import domain.functional.model.PlayerOpenPackService;
-import domain.functional.service.AttackPlayerService;
-import domain.functional.service.HeroFinderService;
-import domain.functional.service.PlayerCreateService;
+import domain.functional.service.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,11 +17,15 @@ public class Main {
         Player player2 = PlayerCreateService.createPlayer("test2");
         InMemoryDatabasePlayer.savePlayer(player2);
         player2 = PlayerOpenPackService.openPack(player2, 1);
-        player2 = PlayerOpenPackService.openPack(player2, 1);
-        //ShowDeckPlayerService.showDeck(player);
+        player2 = PlayerOpenPackService.openPack(player2, 2);
+        ShowDeckPlayerService.showDeck(player2);
         //System.out.println(PlayerFinderService.findPlayer(player.getID()));
-        AttackPlayerService.attackPlayer(player, player2);
-        System.out.println(HeroFinderService.findHero(player2.getDeck(), 1));
+        while(ShowDeckPlayerService.showDeck(player).getCards().size() > 0 && ShowDeckPlayerService.showDeck(player2).getCards().size() > 0) {
+            AttackPlayerService.attackPlayer(player, player2);
+            AttackPlayerService.attackPlayer(player2, player);
+        }
+        System.out.println("deck joueur 1 " + ShowDeckPlayerService.showDeck(player));
+        System.out.println("deck joueur 2 " + ShowDeckPlayerService.showDeck(player2));
         System.out.println(InMemoryDatabaseHistoryBattle.getInstance());
     }
 }

@@ -1,47 +1,25 @@
 package domain.functional.model;
 
+import domain.functional.service.HeroGenerationService;
+import domain.functional.service.PlayerCreateService;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class PackGold extends Pack{
     public PackGold(){
         super.tokensRequired = 2;
-        heroes = new ArrayList<>(5);
-        pack();
+        heroes = new ArrayList<Hero>(5);
+        createPack();
     }
 
-    public void generateHero(){
-        Random random = new Random();
-        int heroRarity = random.nextInt(1, 101);
-        boolean probablyLegendary = heroRarity <= 15;
-        boolean probablyRare = 15 < heroRarity && heroRarity <= 50;
-        if(probablyLegendary)
-            gH(Rarity.LEGENDARY);
-        else if(probablyRare)
-            gH(Rarity.RARE);
-        else
-            gH(Rarity.COMMON);
-    }
-
-    public void pack(){
-        for(int i = 0; i < heroes.size(); i++) {
-            generateHero();
+    public void createPack(){
+        for(int i = 0; i < 5; i++) {
+            this.heroes.add(HeroGenerationService.generateHero());
         }
     }
 
-    public void gH(Rarity rarity){
-        heroes.add(HeroFactory.createHero(generateSpeciality(), rarity, "r"));
-    }
-
-    public Speciality generateSpeciality(){
-        Random random = new Random();
-        int heroRarity = random.nextInt(1, 4);
-        boolean probablyAssassin = heroRarity == 1;
-        boolean probablyTank = heroRarity == 2;
-        if(probablyAssassin)
-            return Speciality.ASSASSIN;
-        else if(probablyTank)
-            return Speciality.TANK;
-        return Speciality.WIZARD;
+    public Player addHeroesToDeck(Player player, int tokenRequired){
+        return PlayerCreateService.createPlayer(player, tokenRequired, heroes);
     }
 }

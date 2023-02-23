@@ -1,30 +1,16 @@
 package domain.functional.model;
 
-public abstract class Hero {
-    String name;
-    int lifePoint;
-    int experiencePoint;
-    int power;
-    int armor;
-    Rarity rarity;
-    int level;
+public interface Hero {
+    int getLifePoint();
+    int getArmor();
+    int getLevel();
+    void setLifePoint(int lifePoint);
+    void setArmor(int armor);
 
-    public int getLevel() {
-        return level;
-    }
+    void levelUp();
 
-    @Override
-    public String toString() {
-        return "Hero{" +
-                "name='" + name + '\'' +
-                ", lifePoint=" + lifePoint +
-                ", experiencePoint=" + experiencePoint +
-                ", power=" + power +
-                ", armor=" + armor +
-                ", rarity='" + rarity + '\'' +
-                ", level=" + level +
-                '}';
-    }
+    void attack(Hero hero);
 
-    public abstract void attack(Hero hero);
+    void battleWin();
+    boolean checkIfHeroIsDead();
 }

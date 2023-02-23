@@ -10,7 +10,7 @@ public class PlayerCreateService {
        return new Player(name);
     }
 
-    public static Player createPlayer(Player player, List<Hero> heroesInDeck){
-        return new Player(player, heroesInDeck);
+    public static Player createPlayer(Player player, int tokenRequired, List<Hero> heroesInDeck){
+        return new Player(player, tokenRequired,heroesInDeck);
     }
 }
