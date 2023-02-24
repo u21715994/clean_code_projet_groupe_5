@@ -2,7 +2,7 @@ package domain.functional.model;
 
 import domain.functional.service.PlayerCreateService;
 
-public class AddHeroPackSilver implements AddHero{
+public class AddHeroPackSilver implements AddHeroPack {
     Pack pack;
 
     public AddHeroPackSilver(Pack pack){

@@ -1,5 +1,5 @@
 package domain.functional.model;
 
-interface AddHero {
+interface AddHeroPack {
     Player addHeroesToDeck(Player player, int tokenRequired);
 }

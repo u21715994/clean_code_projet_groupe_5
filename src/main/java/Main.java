@@ -1,7 +1,10 @@
 import database.InMemoryDatabasePlayer;
+import domain.functional.model.Hero;
 import domain.functional.model.Player;
 import domain.functional.service.PlayerOpenPackService;
 import domain.functional.service.*;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,10 +21,12 @@ public class Main {
         player2 = PlayerOpenPackService.openPack(player2, 1);
         player2 = PlayerOpenPackService.openPack(player2, 2);
         ShowDeckPlayerService.showDeck(player2);
-        //System.out.println(PlayerFinderService.findPlayer(player.getID()));
         while(!player2.playerLoss() && !player.playerLoss()) {
-            AttackPlayerService.attackPlayer(player, player2);
-            AttackPlayerService.attackPlayer(player2, player);
+            List<Hero> heroesInvolved = new SelectHeroFirstInDeckService().selectHero(player, player2);
+            AttackPlayerService.attackPlayer(heroesInvolved.get(0), heroesInvolved.get(1));
+            UpdatePlayerInDatabaseService.updatePlayer(player.getID(), player);
+            AttackPlayerService.attackPlayer(heroesInvolved.get(1), heroesInvolved.get(0));
+            UpdatePlayerInDatabaseService.updatePlayer(player2.getID(), player2);
         }
         if(player2.playerLoss())
             System.out.println("Le joueur 1 à gagner");
