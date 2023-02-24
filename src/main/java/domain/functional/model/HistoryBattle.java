@@ -10,6 +10,7 @@ public class HistoryBattle {
         this.defender = defender;
     }
 
+    //améliorer class
     public String battleLog(){
         this.battle = "Le joueur " + this.attacker.getName() +
                 " a attaque le joueur " + this.defender.getName();

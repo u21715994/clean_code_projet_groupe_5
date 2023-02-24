@@ -2,7 +2,8 @@ package domain.functional.model;
 
 import java.util.List;
 
-public class Pack {
-    List<Hero> heroes;
-    int tokensRequired;
+interface Pack {
+    void createPack();
+
+    List<Hero> getHeroInPack();
 }

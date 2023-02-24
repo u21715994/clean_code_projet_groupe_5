@@ -1,21 +1,18 @@
 package domain.functional.model;
 
+import lombok.Value;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
+@Value
 public class Deck {
-    private final String ID = "1";
-    List<Hero> cards = new ArrayList<Hero>();
+    private String ID = "1";
+    List<Hero> cards;
 
     public Deck() {
         this.cards = new ArrayList<Hero>();
-    }
-
-    public Deck(List<Hero> heroes) {
-        for(Hero hero: heroes){
-            this.cards.add(hero);
-        }
     }
 
     public String getID() {
@@ -24,10 +21,6 @@ public class Deck {
 
     public List<Hero> getCards() {
         return cards;
-    }
-
-    public void addCardsToDeck(Hero hero){
-        cards.add(hero);
     }
 
     @Override

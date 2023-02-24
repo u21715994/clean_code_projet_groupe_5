@@ -1,5 +1,6 @@
-package domain.functional.model;
+package domain.functional.service;
 
+import domain.functional.model.*;
 import domain.functional.service.UpdatePlayerInDatabaseService;
 
 public class PlayerOpenPackService {
@@ -9,11 +10,11 @@ public class PlayerOpenPackService {
         if(player.getToken() - tokenRequired <= 0)
             throw new IllegalArgumentException("Vous ne pouvez pas ouvrir ce pack, vous n'avez pas le nombre de jeton requis");
         if(tokenRequired == 1) {
-            player = new PackSilver().addHeroesToDeck(player, tokenRequired);
+            player = new AddHeroPackSilver(new PackSilver()).addHeroesToDeck(player, tokenRequired);
             UpdatePlayerInDatabaseService.updatePlayer(player.getID(), player);
             return player;
         }else if(tokenRequired == 2) {
-            player = new PackGold().addHeroesToDeck(player, tokenRequired);
+            player = new AddHeroPackDiamond(new PackDiamond()).addHeroesToDeck(player, tokenRequired);
             UpdatePlayerInDatabaseService.updatePlayer(player.getID(), player);
             return player;
         }else if(tokenRequired != 1 && tokenRequired != 2)

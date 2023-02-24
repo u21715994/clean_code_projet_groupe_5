@@ -1,25 +1,28 @@
 package domain.functional.model;
 
 import domain.functional.service.HeroGenerationService;
-import domain.functional.service.PlayerCreateService;
+import lombok.Value;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.List;
 
-public class PackGold extends Pack{
-    public PackGold(){
-        super.tokensRequired = 2;
+@Value
+public class PackDiamond implements Pack{
+    List<Hero> heroes;
+    public PackDiamond(){
         heroes = new ArrayList<Hero>(5);
         createPack();
     }
 
+    @Override
     public void createPack(){
         for(int i = 0; i < 5; i++) {
             this.heroes.add(HeroGenerationService.generateHero());
         }
     }
 
-    public Player addHeroesToDeck(Player player, int tokenRequired){
-        return PlayerCreateService.createPlayer(player, tokenRequired, heroes);
+    @Override
+    public List<Hero> getHeroInPack() {
+        return heroes;
     }
 }

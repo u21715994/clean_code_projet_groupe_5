@@ -14,9 +14,9 @@ public class AttackPlayerService {
         List<Hero> heroOfPlayer = HeroFinderService.findHero(defender.getDeck(), hero_attacker.getLevel());
         Hero hero_defender = heroOfPlayer.get(0);
         hero_attacker.attack(hero_defender);
-        if(hero_defender.checkIfHeroIsDead()) {
-            hero_attacker.battleWin();
-            hero_attacker.levelUp();
+        if(hero_defender.isDead()) {
+            hero_attacker = hero_attacker.battleWin();
+            UpdateInfoHeroService.updateInfoHeroService(hero_attacker);
             ShowDeckPlayerService.showDeck(defender).getCards().remove(hero_defender);
         }
         UpdatePlayerInDatabaseService.updatePlayer(defender.getID(), defender);

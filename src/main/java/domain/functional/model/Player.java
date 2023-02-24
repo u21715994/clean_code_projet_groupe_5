@@ -23,11 +23,11 @@ public class Player {
         this.ID = player.ID;
         this.deck = new Deck();
         this.token = player.token - tokenRequired;
-        for(Hero hero: player.deck.cards){
-            this.deck.cards.add(hero);
+        for(Hero hero: player.deck.getCards()){
+            this.deck.getCards().add(hero);
         }
         for(Hero hero: heroes){
-            this.deck.cards.add(hero);
+            this.deck.getCards().add(hero);
         }
     }
 
@@ -37,5 +37,9 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public boolean playerLoss(){
+        return this.deck.getCards().size() == 0;
     }
 }

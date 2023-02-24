@@ -5,6 +5,8 @@ import domain.functional.model.Rarity;
 
 import java.util.Random;
 
+//amelioer?
+
 public class HeroGenerationService {
     public static Hero generateHero(){
         Random random = new Random();

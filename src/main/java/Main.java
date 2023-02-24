@@ -1,7 +1,6 @@
-import database.InMemoryDatabaseHistoryBattle;
 import database.InMemoryDatabasePlayer;
 import domain.functional.model.Player;
-import domain.functional.model.PlayerOpenPackService;
+import domain.functional.service.PlayerOpenPackService;
 import domain.functional.service.*;
 
 public class Main {
@@ -20,12 +19,16 @@ public class Main {
         player2 = PlayerOpenPackService.openPack(player2, 2);
         ShowDeckPlayerService.showDeck(player2);
         //System.out.println(PlayerFinderService.findPlayer(player.getID()));
-        while(ShowDeckPlayerService.showDeck(player).getCards().size() > 0 && ShowDeckPlayerService.showDeck(player2).getCards().size() > 0) {
+        while(!player2.playerLoss() && !player.playerLoss()) {
             AttackPlayerService.attackPlayer(player, player2);
             AttackPlayerService.attackPlayer(player2, player);
         }
+        if(player2.playerLoss())
+            System.out.println("Le joueur 1 à gagner");
+        else
+            System.out.println("Le joueur 2 à gagner");
         System.out.println("deck joueur 1 " + ShowDeckPlayerService.showDeck(player));
         System.out.println("deck joueur 2 " + ShowDeckPlayerService.showDeck(player2));
-        System.out.println(InMemoryDatabaseHistoryBattle.getInstance());
+        //System.out.println(InMemoryDatabaseHistoryBattle.getInstance());
     }
 }
