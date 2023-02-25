@@ -27,17 +27,21 @@ public class Main {
             int indexHeroPlayer2 = player2.getDeck().getCards().indexOf(heroesInvolved.get(1));
             heroesInvolved.set(1, DefendHeroPlayerService.defendPlayer(heroesInvolved.get(0), heroesInvolved.get(1)));
             UpdateInformationPlayerDefender.informationPlayerDefender(player2, heroesInvolved.get(1),indexHeroPlayer2);
-            UpdateHeroInformation.updateHeroInformation(heroesInvolved.get(0), heroesInvolved.get(1), player2);
+            player = UpdateHeroInformation.updateHeroInformation(heroesInvolved.get(0), heroesInvolved.get(1), player, player2);
 
 
             heroesInvolved.set(0, DefendHeroPlayerService.defendPlayer(heroesInvolved.get(1), heroesInvolved.get(0)));
             UpdateInformationPlayerDefender.informationPlayerDefender(player, heroesInvolved.get(0),indexHeroPlayer1);
-            UpdateHeroInformation.updateHeroInformation(heroesInvolved.get(1), heroesInvolved.get(0), player);
+            player2 = UpdateHeroInformation.updateHeroInformation(heroesInvolved.get(1), heroesInvolved.get(0), player2, player);
         }
-        if(player2.playerLoss())
+        if(player2.playerLoss()) {
             System.out.println("Le joueur 1 à gagner");
-        else if(player.playerLoss())
+            System.out.println(player);
+        }
+        else if(player.playerLoss()) {
             System.out.println("Le joueur 2 à gagner");
+            System.out.println(player2);
+        }
         System.out.println("deck joueur 1 " + ShowDeckPlayerService.showDeck(player));
         System.out.println("deck joueur 2 " + ShowDeckPlayerService.showDeck(player2));
         //System.out.println(InMemoryDatabaseHistoryBattle.getInstance());
