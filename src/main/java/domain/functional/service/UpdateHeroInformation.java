@@ -7,7 +7,7 @@ public class UpdateHeroInformation {
     public static void updateHeroInformation(Hero hero_attacker, Hero hero_defender, Player defender){
         if(hero_defender.isDead()) {
             hero_attacker = hero_attacker.battleWin();
-            UpdateInfoHeroService.updateInfoHeroService(hero_attacker);
+            LevelUpHeroService.levelHeroUpService(hero_attacker);
             ShowDeckPlayerService.showDeck(defender).getCards().remove(hero_defender);
         }
     }

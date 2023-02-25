@@ -54,6 +54,11 @@ public class HeroAssassin implements Hero {
     }
 
     @Override
+    public int getPower() {
+        return power;
+    }
+
+    @Override
     public Hero setLifePoint(int lifePoint) {
         return new HeroAssassin(this.name, this.lifePoint + lifePoint, this.experiencePoint,
                 this.power, this.armor, this.rarity, this.level
@@ -89,13 +94,14 @@ public class HeroAssassin implements Hero {
     }
 
     @Override
-    public void attack(Hero hero) {
-        hero.setLifePoint(-this.power);
-        hero.setLifePoint(-(this.power - hero.getArmor()));
+    public Hero defend(Hero hero) {
+        return new HeroAssassin(this.name, this.lifePoint - (hero.getPower() + hero.getPower() - this.getArmor()),
+                this.experiencePoint, this.power, this.armor, this.rarity, this.level
+        );
     }
 
     @Override
     public boolean isDead() {
-        return lifePoint <= 0;
+        return this.lifePoint <= 0;
     }
 }

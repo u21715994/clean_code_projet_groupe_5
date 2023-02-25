@@ -19,18 +19,24 @@ public class Main {
         Player player2 = PlayerCreateService.createPlayer("test2");
         InMemoryDatabasePlayer.savePlayer(player2);
         player2 = PlayerOpenPackService.openPack(player2, 1);
-        player2 = PlayerOpenPackService.openPack(player2, 2);
+        player2 = PlayerOpenPackService.openPack(player2, 1);
         ShowDeckPlayerService.showDeck(player2);
         while(!player2.playerLoss() && !player.playerLoss()) {
             List<Hero> heroesInvolved = new SelectHeroFirstInDeckService().selectHero(player, player2);
-            AttackPlayerService.attackPlayer(heroesInvolved.get(0), heroesInvolved.get(1));
-            UpdatePlayerInDatabaseService.updatePlayer(player.getID(), player);
-            AttackPlayerService.attackPlayer(heroesInvolved.get(1), heroesInvolved.get(0));
-            UpdatePlayerInDatabaseService.updatePlayer(player2.getID(), player2);
+            int indexHeroPlayer1 = player.getDeck().getCards().indexOf(heroesInvolved.get(0));
+            int indexHeroPlayer2 = player2.getDeck().getCards().indexOf(heroesInvolved.get(1));
+            heroesInvolved.set(1, DefendHeroPlayerService.defendPlayer(heroesInvolved.get(0), heroesInvolved.get(1)));
+            UpdateInformationPlayerDefender.informationPlayerDefender(player2, heroesInvolved.get(1),indexHeroPlayer2);
+            UpdateHeroInformation.updateHeroInformation(heroesInvolved.get(0), heroesInvolved.get(1), player2);
+
+
+            heroesInvolved.set(0, DefendHeroPlayerService.defendPlayer(heroesInvolved.get(1), heroesInvolved.get(0)));
+            UpdateInformationPlayerDefender.informationPlayerDefender(player, heroesInvolved.get(0),indexHeroPlayer1);
+            UpdateHeroInformation.updateHeroInformation(heroesInvolved.get(1), heroesInvolved.get(0), player);
         }
         if(player2.playerLoss())
             System.out.println("Le joueur 1 à gagner");
-        else
+        else if(player.playerLoss())
             System.out.println("Le joueur 2 à gagner");
         System.out.println("deck joueur 1 " + ShowDeckPlayerService.showDeck(player));
         System.out.println("deck joueur 2 " + ShowDeckPlayerService.showDeck(player2));

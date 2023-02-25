@@ -10,7 +10,7 @@ public class HeroWizard implements Hero {
     int level;
     public HeroWizard(String name, Rarity rarity){
         this.name = name;
-        this.lifePoint = 750 + (750/10) * rarity.getValue();
+        this.lifePoint = 700 + (700/10) * rarity.getValue();
         this.experiencePoint = 0;
         this.power = 150 + (150/10) * rarity.getValue();
         this.armor = 10 + (10/10) * rarity.getValue();
@@ -50,15 +50,20 @@ public class HeroWizard implements Hero {
     }
 
     @Override
+    public int getPower() {
+        return power;
+    }
+
+    @Override
     public Hero setLifePoint(int lifePoint) {
-        return new HeroAssassin(this.name, this.lifePoint + lifePoint, this.experiencePoint,
+        return new HeroWizard(this.name, this.lifePoint + lifePoint, this.experiencePoint,
                 this.power, this.armor, this.rarity, this.level
         );
     }
 
     @Override
     public Hero levelUp(){
-        return new HeroAssassin(this.name, this.lifePoint + this.lifePoint / 10, this.experiencePoint,
+        return new HeroWizard(this.name, this.lifePoint + this.lifePoint / 10, this.experiencePoint,
                 this.power + this.power / 10, this.armor + this.armor / 10, this.rarity, this.level+1
         );
     }
@@ -79,19 +84,20 @@ public class HeroWizard implements Hero {
 
     @Override
     public Hero battleWin(){
-        return new HeroAssassin(this.name, this.lifePoint + this.lifePoint, this.experiencePoint+1,
+        return new HeroWizard(this.name, this.lifePoint + this.lifePoint, this.experiencePoint+1,
                 this.power, this.armor, this.rarity, this.level
         );
     }
 
     @Override
-    public void attack(Hero hero) {
-        hero.setLifePoint(-this.power);
-        hero.setLifePoint(-(this.power - hero.getArmor()));
+    public Hero defend(Hero hero) {
+        return new HeroWizard(this.name, this.lifePoint - (hero.getPower() + hero.getPower() - this.getArmor()),
+                this.experiencePoint, this.power, this.armor, this.rarity, this.level
+        );
     }
 
     @Override
     public boolean isDead() {
-        return lifePoint <= 0;
+        return this.lifePoint <= 0;
     }
 }

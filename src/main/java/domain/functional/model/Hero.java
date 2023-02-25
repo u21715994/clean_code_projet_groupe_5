@@ -4,11 +4,12 @@ public interface Hero {
     int getLifePoint();
     int getArmor();
     int getLevel();
+    int getPower();
     Hero setLifePoint(int lifePoint);
 
     Hero levelUp();
 
-    void attack(Hero hero);
+    Hero defend(Hero hero);
 
     Hero battleWin();
     boolean isDead();
