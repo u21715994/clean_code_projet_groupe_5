@@ -1,5 +1,7 @@
 package domain.functional.model;
 
+import java.util.Objects;
+
 public interface Hero {
     int getLifePoint();
     int getArmor();
@@ -15,4 +17,8 @@ public interface Hero {
     boolean isDead();
 
     int getExperiencePoint();
+
+    boolean equals(Object o);
+
+    int hashCode();
 }

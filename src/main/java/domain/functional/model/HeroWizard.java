@@ -1,5 +1,7 @@
 package domain.functional.model;
 
+import java.util.Objects;
+
 public class HeroWizard implements Hero {
     String name;
     int lifePoint;
@@ -99,5 +101,18 @@ public class HeroWizard implements Hero {
     @Override
     public boolean isDead() {
         return this.lifePoint <= 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HeroWizard that = (HeroWizard) o;
+        return lifePoint == that.lifePoint && experiencePoint == that.experiencePoint && power == that.power && armor == that.armor && level == that.level && Objects.equals(name, that.name) && rarity == that.rarity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, lifePoint, experiencePoint, power, armor, rarity, level);
     }
 }
